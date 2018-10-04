@@ -1,5 +1,8 @@
 @import url("https://fonts.googleapis.com/css?family=Contrail+One|Open+Sans");
 body {
+  margin: 0;
+  padding: 0;
+  overflow-y: scroll;
   scroll-behavior: smooth;
 }
 #about,
@@ -7,9 +10,9 @@ body {
 #contact,
 #frontpage {
   position: relative;
-  height: 95vh;
-  width: 95vw;
-  /* overflow: hidden; */
+  height: 90vh;
+  width: 90vw;
+  /* overflow-x: hidden; */
   padding: 5vw;
 }
 h1,
@@ -18,6 +21,20 @@ li,
 a {
   font-family: "Contrail One";
   text-transform: uppercase;
+}
+.aboutwrapper,
+.projectwrapper,
+.wrapper {
+  font-family: "Contrail One";
+  text-transform: uppercase;
+  position: relative;
+}
+.aboutwrapper,
+.projectwrapper {
+  font-size: 50px;
+  grid-column: 1/-1;
+  grid-row: 1;
+  align-self: center;
 }
 /*Menu starts*/
 
@@ -127,9 +144,6 @@ rect:nth-child(3) {
   grid-column: 2/-1;
   grid-row: 1;
   font-size: 40px;
-  font-family: "Contrail One";
-  text-transform: uppercase;
-  position: relative;
   /* top: 20vh; */
   /* left: 30vw; */
   align-self: end;
@@ -149,7 +163,7 @@ rect:nth-child(3) {
 }
 
 .redbox {
-  background-image: url(/img/redbox.svg);
+  background-image: url(img/redbox.svg);
   background-repeat: no-repeat;
   height: 60vh;
   width: 50vw;
@@ -192,7 +206,7 @@ rect:nth-child(3) {
   grid-row: 5;
   height: 4vw;
   height: 4vh;
-  background-image: url(/img/orangebox.svg);
+  background-image: url(img/orangebox.svg);
   background-repeat: no-repeat;
   align-self: end;
 }
@@ -209,7 +223,7 @@ rect:nth-child(3) {
   /* align-self: end; */
   height: 100vh;
   width: 59vw;
-  background-image: url(/img/bluebox.svg);
+  background-image: url(img/bluebox.svg);
   background-repeat: no-repeat;
   z-index: -10000;
 }
@@ -221,23 +235,49 @@ rect:nth-child(3) {
   align-self: end;
   font-family: "Open Sans";
 }
-img.bwme {
+.bwme {
   justify-self: center;
   grid-column: 1/-1;
   grid-row: 2;
   width: 50%;
 }
 
-.aboutwrapper {
-  grid-column: 1/-1;
-  grid-row: 1;
-  font-size: 50px;
-  font-family: "Contrail One";
-  text-transform: uppercase;
-  position: relative;
-  align-self: center;
+/***********PROJECTS********************/
+#projects {
+  margin-top: 70vh;
+  display: grid;
+  grid-template-columns: 1;
+  grid-gap: 3%;
 }
-/***********ABOUT ENDS********************/
+.project:nth-child(5n) {
+  background-image: url(img/lightbluebox.svg);
+}
+.project:nth-child(5n + 1) {
+  background-image: url(img/redbox.svg);
+}
+.project:nth-child(5n + 2) {
+  background-image: url(img/orangebox.svg);
+}
+.project:nth-child(5n + 3) {
+  background-image: url(img/greenbox.svg);
+}
+.project:nth-child(5n + 4) {
+  background-image: url(img/bluebox.svg);
+}
+.project {
+  text-align: center;
+  /* width: 50vw; */
+  height: 35vh;
+}
+.project > img {
+  padding: 10vw 5vw 5vw 10vw;
+  width: 80%;
+  text-align: center;
+}
+.huset > img {
+  width: 45%;
+  /* margin-left: 4vw; */
+}
 
 /* @media (min-width: 480px) {
 } */
@@ -291,22 +331,48 @@ img.bwme {
     grid-template-rows: 1fr 1fr 1fr;
   }
   #about > p {
+    font-size: 1em;
+    grid-column: 3/-1;
+    grid-row: 2;
     margin: 10em;
   }
   .bluebox {
     height: 80vh;
     width: 59vw;
   }
+  .bwme {
+    justify-self: center;
+    grid-column: 1/4;
+    grid-row: 2;
+    width: 50%;
+  }
   .skilllist {
     grid-column: 3/-1;
     grid-row: 2;
     align-self: end;
+    align-self: left;
+    text-align: center;
+  }
+  .skilllist > ul {
+    padding: 0;
   }
   .skilllist > ul > li {
-    padding: 1%;
-    font-size: 1.5em;
     grid-row: 3;
-    display: inline;
+  }
+  .cv {
+    text-align: center;
+    grid-column: 4/5;
+    grid-row: 3;
+    height: 4vw;
+    height: 4vh;
+    background-image: url(img/orangebox.svg);
+    background-repeat: no-repeat;
+    align-self: center;
+  }
+  .cv > a {
+    margin: 0;
+    /* padding: 5%; */
+    font-size: 1.5em;
   }
 }
 /* @media (min-width: 1024px) {
