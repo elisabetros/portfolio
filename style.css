@@ -7,14 +7,13 @@ body {
 }
 #about,
 #projects,
-#contact,
 #frontpage {
   position: relative;
-  height: 90vh;
-  width: 90vw;
-  /* overflow-x: hidden; */
+  max-width: 90vw;
   padding: 5vw;
+  margin-bottom: 15vh;
 }
+
 h1,
 h2,
 li,
@@ -24,17 +23,26 @@ a {
 }
 .aboutwrapper,
 .projectwrapper,
+.contactwrapper,
 .wrapper {
   font-family: "Contrail One";
   text-transform: uppercase;
   position: relative;
 }
 .aboutwrapper,
-.projectwrapper {
-  font-size: 50px;
+.projectwrapper,
+.wrapper {
+  font-size: 30px;
+}
+.aboutwrapper,
+.projectwrapper,
+.contactwrapper {
   grid-column: 1/-1;
   grid-row: 1;
   align-self: center;
+}
+.contactwrapper {
+  font-size: 20px;
 }
 /*Menu starts*/
 
@@ -62,6 +70,7 @@ a {
   right: 0;
   z-index: 1;
   transition: all 0.6s;
+  background-color: rgba(255, 255, 255, 0.9);
 }
 
 .appbar,
@@ -91,7 +100,6 @@ a {
 
 .menuIcon {
   float: right;
-  top: 0;
   height: 30px;
   margin-top: 10px;
   margin-right: 50px;
@@ -125,7 +133,7 @@ rect:nth-child(3) {
 .menulogo {
   width: 20vw;
   top: 1vh;
-  margin-left: 10px;
+  margin: 10px 0 0 10px;
   position: absolute;
 }
 
@@ -134,7 +142,7 @@ rect:nth-child(3) {
 /***************FRONTPAGE**********************/
 #frontpage {
   /* position: absolute; */
-  top: 0;
+  top: 10vh;
   left: 0;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
@@ -143,7 +151,7 @@ rect:nth-child(3) {
 .wrapper {
   grid-column: 2/-1;
   grid-row: 1;
-  font-size: 40px;
+  /* font-size: 40px; */
   /* top: 20vh; */
   /* left: 30vw; */
   align-self: end;
@@ -154,7 +162,7 @@ rect:nth-child(3) {
   -webkit-text-stroke: 1px black;
 }
 .front {
-  font-size: 1.5em;
+  font-size: 1em;
   position: relative;
   grid-column: 2/-1;
   grid-row: 2;
@@ -181,7 +189,7 @@ rect:nth-child(3) {
 #about {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: repeat(4, 1fr);
+  grid-template-rows: 0.5fr 0.5fr 1fr 0.5fr;
 }
 #about > h1 {
   grid-column: 1;
@@ -229,10 +237,10 @@ rect:nth-child(3) {
 }
 #about > p {
   font-size: 0.9em;
-  margin: 3em;
+  margin: 0 3em;
   grid-column: 1/-1;
   grid-row: 3;
-  align-self: end;
+  /* align-self: end; */
   font-family: "Open Sans";
 }
 .bwme {
@@ -244,53 +252,95 @@ rect:nth-child(3) {
 
 /***********PROJECTS********************/
 #projects {
-  margin-top: 70vh;
   display: grid;
-  grid-template-columns: 1;
-  grid-gap: 3%;
+  grid-template-columns: 1fr;
+  grid-gap: 5vh;
 }
-.project:nth-child(5n) {
-  background-image: url(img/lightbluebox.svg);
-}
-.project:nth-child(5n + 1) {
-  background-image: url(img/redbox.svg);
-}
-.project:nth-child(5n + 2) {
-  background-image: url(img/orangebox.svg);
-}
-.project:nth-child(5n + 3) {
-  background-image: url(img/greenbox.svg);
-}
-.project:nth-child(5n + 4) {
+.huset {
   background-image: url(img/bluebox.svg);
 }
+.artist,
+.hina {
+  background-image: url(img/lightbluebox.svg);
+}
+.citywalk {
+  background-image: url(img/orangebox.svg);
+}
+.yfu {
+  background-image: url(img/redbox.svg);
+}
+.curric {
+  background-image: url(img/greenbox.svg);
+}
+.hovercontent {
+  display: none;
+  margin: auto;
+}
+
 .project {
+  cursor: pointer;
   text-align: center;
   /* width: 50vw; */
   height: 35vh;
 }
-.project > img {
+.image {
   padding: 10vw 5vw 5vw 10vw;
   width: 80%;
   text-align: center;
 }
-.huset > img {
+.huset .image {
   width: 45%;
   /* margin-left: 4vw; */
+}
+/*************CONTACT***********************/
+#contact {
+  position: relative;
+  height: 20vh;
+  padding: 10vw 5vw;
+  background-color: #d84728;
+  display: grid;
+  grid-template-columns: 3fr 1fr 1fr;
+  z-index: -100000;
+}
+#contact > div > h2 {
+  margin: 0;
+  font-size: 0.8em;
+  font-family: "Open Sans";
+  text-transform: lowercase;
+}
+span > img {
+  display: inline;
+  width: 10%;
+}
+.icons {
+  width: 10vw;
+  padding: 5%;
+}
+.git {
+  justify-self: right;
+}
+.icons > img {
+  width: 100%;
+  display: inline-block;
 }
 
 /* @media (min-width: 480px) {
 } */
 
-/*************MEDIA QUERIES*********/
-@media (min-width: 768px) {
+/*************TABLET*********/
+@media (min-width: 760px) {
+  #about,
+  #projects,
+  #frontpage {
+    margin-bottom: 10vh;
+  }
   .front {
     font-size: 2em;
     grid-column: 4/-1;
     /* align-self: center; */
   }
   .redbox {
-    width: 40vw;
+    width: 50vw;
     height: 70vh;
     align-self: start;
   }
@@ -299,6 +349,179 @@ rect:nth-child(3) {
     grid-column: 3/-1;
   }
 
+  /************Menu starts************/
+
+  .menu {
+    font-size: 1.5em;
+  }
+
+  /* display: inline; 
+    padding: 2em;
+    font-size: 1.3em;
+  }*/
+  .menuIcon {
+    width: 15vw;
+    margin-right: 10vw;
+  }
+
+  /*************Menu ends***********/
+  /***************ABOUT******************/
+  #about {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: 0.2fr 0.5fr 0.5fr;
+    grid-gap: 1vw;
+  }
+  #about > p {
+    font-size: 1em;
+    grid-column: 3/-1;
+    grid-row: 2;
+    padding: 0 5em;
+    margin: 0;
+  }
+  .bluebox {
+    grid-column: 1/-1;
+    grid-row: 1/-1;
+    height: 80vh;
+    width: 59vw;
+  }
+  .bwme {
+    justify-self: center;
+    grid-column: 1/4;
+    grid-row: 2;
+    width: 70%;
+  }
+  .skilllist {
+    grid-column: 3/-1;
+    grid-row: 3;
+    text-align: center;
+  }
+  .skilllist > ul {
+    padding: 0;
+  }
+  .skilllist > ul > li {
+    grid-row: 3;
+  }
+  .cv {
+    text-align: center;
+    grid-column: 2;
+    grid-row: 3;
+    height: 4vw;
+    height: 4vh;
+    background-image: url(img/orangebox.svg);
+    background-repeat: no-repeat;
+    align-self: start;
+  }
+  .cv > a {
+    margin: 0;
+    /* padding: 5%; */
+    font-size: 1.5em;
+  }
+  /***************PROJECTS******************/
+  #projects {
+    height: 70vh;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: 1fr 1fr;
+    grid-row-gap: 5vh;
+  }
+  .projectwrapper {
+    align-self: start;
+  }
+  .sliderwrapper {
+    grid-row: 2;
+  }
+  .image {
+    padding: 8vw 2vw 2vw 3.5vw;
+  }
+  /***projects slider****/
+  .next,
+  .back {
+    width: 5vw;
+    height: 5vh;
+    background-color: black;
+    position: absolute;
+    top: 40vh;
+    cursor: pointer;
+  }
+
+  .next {
+    right: 17vw;
+  }
+
+  .back {
+    left: 20vw;
+  }
+
+  .project {
+    top: 20vh;
+    transition: all 1s;
+    background-repeat: no-repeat;
+    width: 50vw;
+    height: 30vh;
+    position: absolute;
+  }
+
+  .three {
+    left: 25vw;
+    z-index: 1;
+  }
+  .two,
+  .one,
+  .four,
+  .five,
+  .six {
+    opacity: 0.9;
+  }
+  .one {
+    transform: scale(0.6);
+    left: 0vw;
+    z-index: -3;
+  }
+
+  .two {
+    transform: scale(0.8);
+    left: 10vw;
+    z-index: -2;
+  }
+
+  .four {
+    transform: scale(0.8);
+    right: 10vw;
+    z-index: -4;
+  }
+
+  .five {
+    transform: scale(0.6);
+    right: 0vw;
+    z-index: -5;
+  }
+
+  .six {
+    transform: scale(0.4);
+    right: -10vw;
+    z-index: -6;
+  }
+
+  /***************CONTACT*************************/
+  #contact {
+    /* height: 10vh; */
+    padding: 5vw 10vw;
+  }
+  #contact > div > h2 {
+    font-size: 1em;
+  }
+  span > img {
+    display: inline;
+    width: 3%;
+  }
+  .icons {
+    width: 3vw;
+    padding: 5%;
+  }
+}
+
+/**************DESKTOP******************/
+@media (min-width: 1024px) {
   /************Menu starts************/
   .appbar,
   .menu,
@@ -325,55 +548,38 @@ rect:nth-child(3) {
   }
   /*************Menu ends***********/
   /***************ABOUT******************/
-  #about {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: 1fr 1fr 1fr;
-  }
+
   #about > p {
-    font-size: 1em;
-    grid-column: 3/-1;
-    grid-row: 2;
-    margin: 10em;
-  }
-  .bluebox {
-    height: 80vh;
-    width: 59vw;
+    padding: 5em;
   }
   .bwme {
-    justify-self: center;
-    grid-column: 1/4;
-    grid-row: 2;
     width: 50%;
   }
-  .skilllist {
-    grid-column: 3/-1;
-    grid-row: 2;
-    align-self: end;
-    align-self: left;
-    text-align: center;
+  /***************PROJECTS******************/
+  #projects {
+    margin: 20vh 0;
   }
-  .skilllist > ul {
+  .project {
+    height: 60vh;
+  }
+  .project > a > img {
     padding: 0;
   }
-  .skilllist > ul > li {
-    grid-row: 3;
+  /***************CONTACT*************************/
+  #contact {
+    /* height: 10vh; */
+    margin-top: 10vh;
+    padding: 5vw 10vw;
   }
-  .cv {
-    text-align: center;
-    grid-column: 4/5;
-    grid-row: 3;
-    height: 4vw;
-    height: 4vh;
-    background-image: url(img/orangebox.svg);
-    background-repeat: no-repeat;
-    align-self: center;
+  #contact > div > h2 {
+    font-size: 1em;
   }
-  .cv > a {
-    margin: 0;
-    /* padding: 5%; */
-    font-size: 1.5em;
+  span > img {
+    display: inline;
+    width: 3%;
+  }
+  .icons {
+    width: 3vw;
+    padding: 5%;
   }
 }
-/* @media (min-width: 1024px) {
-} */

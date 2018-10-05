@@ -1,6 +1,10 @@
-const letters = document.querySelectorAll(".wrapper>span");
+const letters = document.querySelectorAll("span");
+
 const about = document.querySelectorAll(".aboutwrapper>span");
 const frontDiv = document.querySelector(".wrapper");
+const aboutDiv = document.querySelector(".aboutwrapper");
+const projectDiv = document.querySelector(".projectwrapper");
+const contactDiv = document.querySelector(".contactwrapper");
 let zCounter = -1;
 let svg = document.querySelector("svg");
 
@@ -21,7 +25,7 @@ letters.forEach(singleSpan => {
     // console.log(copies.offsetLeft);
     // console.log(counter);
 
-    frontDiv.appendChild(copies);
+    singleSpan.parentElement.appendChild(copies);
   });
 });
 
@@ -44,4 +48,50 @@ function toggleMenu() {
   bars[1].classList.toggle("fadeOut");
   bars[2].classList.toggle("rotateUp");
   menu.classList.toggle("hidden");
+}
+
+let projects = document.querySelectorAll(".project");
+const nextBtn = document.querySelector(".next");
+const backBtn = document.querySelector(".back");
+let classes = ["one", "two", "three", "four", "five", "six"];
+// let projectsArray = Array.from(projects);
+
+//move all classes
+function init() {
+  for (let i = 0; i < projects.length; i++) {
+    projects[i].classList.add(classes[i]);
+    // console.log(projects[i].className);
+  }
+}
+init();
+nextBtn.addEventListener("click", moveRight);
+backBtn.addEventListener("click", moveLeft);
+
+function moveLeft() {
+  for (let i = 0; i < projects.length; i++) {
+    projects[i].classList.replace(classes[i], classes[i - 1]);
+    if (projects[i].classList.contains(undefined)) {
+      projects[i].classList.replace("undefined", classes[i]);
+    }
+  }
+  let lastClass = classes.pop();
+  classes.unshift(lastClass);
+  // console.log(classes);
+  init();
+  projects[0].classList.remove(classes[1]);
+}
+function moveRight() {
+  projects.className = "";
+  for (let i = 0; i < projects.length; i++) {
+    projects[i].classList.replace(classes[i], classes[i + 1]);
+    // console.log(projects[i].className);
+    if (projects[i].classList.contains(undefined)) {
+      projects[i].classList.replace("undefined", classes[i]);
+    }
+  }
+  let lastClass = classes.shift();
+  classes.push(lastClass);
+  // console.log(classes);
+  init();
+  projects[5].classList.remove(classes[4]);
 }
